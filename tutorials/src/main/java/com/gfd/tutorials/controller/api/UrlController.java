@@ -1,5 +1,7 @@
 package com.gfd.tutorials.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +19,7 @@ public class UrlController {
 	@Autowired
 	UrlService urlService;
 	
-	@PostMapping
+	@PostMapping("/new")
 	public Url saveUrl(@RequestBody Url url){
 		return urlService.saveUrl(url);
 	}
@@ -25,5 +27,10 @@ public class UrlController {
 	@GetMapping("/{id}")
 	public Url getUrl(@PathVariable Integer id) {
 		return urlService.findById(id);
+	}
+	
+	@GetMapping("/all")
+	public List<Url> getAllUrls(){
+		return urlService.findAll();
 	}
 }

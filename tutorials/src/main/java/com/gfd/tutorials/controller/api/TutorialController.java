@@ -1,5 +1,7 @@
 package com.gfd.tutorials.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +19,7 @@ public class TutorialController {
 	@Autowired
 	TutorialService tutorialService;
 	
-	@PostMapping
+	@PostMapping("/new")
 	public Tutorial saveTutorial(@RequestBody Tutorial tutorial){
 		return tutorialService.saveTutorial(tutorial);
 	}
@@ -25,5 +27,10 @@ public class TutorialController {
 	@GetMapping("/{id}")
 	public Tutorial getTutorial(@PathVariable Integer id) {
 		return tutorialService.findById(id);
+	}
+	
+	@GetMapping("/all")
+	public List<Tutorial> getAllTutorials(){
+		return tutorialService.findAll();
 	}
 }

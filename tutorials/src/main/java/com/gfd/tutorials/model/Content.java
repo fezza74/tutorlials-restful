@@ -1,5 +1,7 @@
 package com.gfd.tutorials.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import jakarta.persistence.UniqueConstraint;
 public class Content {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore
 	private Integer id;
 	
 	@Column(name = "type_of_content", length=64, nullable = false)

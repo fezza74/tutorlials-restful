@@ -4,16 +4,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gfd.tutorials.model.Content;
+import com.gfd.tutorials.model.Tutorial;
 import com.gfd.tutorials.repository.IContentRepository;
+import com.gfd.tutorials.repository.ITutorialRepository;
 
 
 @Service
 public class ContentService implements IContentService {
 	@Autowired
 	IContentRepository contentRepository;
+	@Autowired
+	ITutorialRepository tutorialRepository;
 	
 	@Override
 	public Content saveContent(Content content) {
+		Tutorial tutorial = tutorialRepository.findByTitle(content.getTutorial().getTitle());
+		content.setTutorial(tutorial);
 		return contentRepository.save(content);
 	}
 

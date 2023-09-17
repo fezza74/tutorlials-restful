@@ -1,5 +1,7 @@
 package com.gfd.tutorials.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +19,7 @@ public class PhoneController {
 	@Autowired
 	PhoneService phoneService;
 	
-	@PostMapping
+	@PostMapping("/new")
 	public Phone savePhone(@RequestBody Phone phone){
 		return phoneService.savePhone(phone);
 	}
@@ -25,5 +27,10 @@ public class PhoneController {
 	@GetMapping("/{id}")
 	public Phone getPhone(@PathVariable Integer id) {
 		return phoneService.findById(id);
+	}
+	
+	@GetMapping("/all")
+	public List<Phone> getAllPhones(){
+		return phoneService.findAll();
 	}
 }

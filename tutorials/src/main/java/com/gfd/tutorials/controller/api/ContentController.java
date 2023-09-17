@@ -1,5 +1,7 @@
 package com.gfd.tutorials.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +19,7 @@ public class ContentController {
 	@Autowired
 	ContentService contentService;
 	
-	@PostMapping
+	@PostMapping("/new")
 	public Content saveContent(@RequestBody Content content){
 		return contentService.saveContent(content);
 	}
@@ -25,5 +27,10 @@ public class ContentController {
 	@GetMapping("/{id}")
 	public Content getContent(@PathVariable Integer id) {
 		return contentService.findById(id);
+	}
+	
+	@GetMapping("/all")
+	public List<Content> getAllContents(){
+		return contentService.findAll();
 	}
 }

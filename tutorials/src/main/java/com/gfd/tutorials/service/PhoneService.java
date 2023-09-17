@@ -18,6 +18,8 @@ public class PhoneService implements IPhoneService {
 	
 	@Override
 	public Phone savePhone(Phone phone) {
+		User user = iUserRepository.findByUserCode(phone.getUser().getUserCode());
+		phone.setUser(user);
 		return phoneRepository.save(phone);
 	}
 

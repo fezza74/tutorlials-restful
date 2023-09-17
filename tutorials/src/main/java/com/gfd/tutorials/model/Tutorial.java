@@ -3,6 +3,8 @@ package com.gfd.tutorials.model;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,6 +21,7 @@ import jakarta.persistence.Table;
 public class Tutorial {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore
 	private Integer id;
 	
 	@Column(name = "tutorial_name", length = 512, nullable = false)
@@ -35,7 +38,7 @@ public class Tutorial {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private Phone user;
+	private User user;
 	
 	@OneToMany(mappedBy = "tutorial", fetch = FetchType.LAZY)
 	private Set<Content> contents;
@@ -80,11 +83,11 @@ public class Tutorial {
 		this.createdAt = createdAt;
 	}
 
-	public Phone getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Phone user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

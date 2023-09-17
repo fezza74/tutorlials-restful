@@ -1,5 +1,7 @@
 package com.gfd.tutorials.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +19,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@PostMapping
+	@PostMapping("/new")
 	public User saveUser(@RequestBody User user){
 		return userService.saveUser(user);
 	}
@@ -25,5 +27,10 @@ public class UserController {
 	@GetMapping("/{id}")
 	public User getUser(@PathVariable Integer id) {
 		return userService.findById(id);
+	}
+	
+	@GetMapping("/all")
+	public List<User> getAllUsers(){
+		return userService.findAll();
 	}
 }

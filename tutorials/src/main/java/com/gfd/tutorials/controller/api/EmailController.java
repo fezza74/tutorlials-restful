@@ -1,5 +1,7 @@
 package com.gfd.tutorials.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +19,7 @@ public class EmailController {
 	@Autowired
 	EmailService emailService;
 	
-	@PostMapping
+	@PostMapping("/new")
 	public Email saveEmail(@RequestBody Email email){
 		return emailService.saveEmail(email);
 	}
@@ -25,5 +27,10 @@ public class EmailController {
 	@GetMapping("/{id}")
 	public Email getEmail(@PathVariable Integer id) {
 		return emailService.findById(id);
+	}
+	
+	@GetMapping("/all")
+	public List<Email> getAllEmails(){
+		return emailService.findAll();
 	}
 }
