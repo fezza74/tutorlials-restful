@@ -1,20 +1,29 @@
 package com.gfd.tutorials.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="phones")
+@Table(name="phones", uniqueConstraints = {@UniqueConstraint(columnNames = {"phone_number", "nation_code"})})
 public class Phone {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore
+	private Integer id;
+	
 	@Column(
-		name="phone_number"
+		name="phone_number", nullable=false
 	)
-	private Integer number;
+	private String number;
 	
 	@Column(
 		name="nation_code",
@@ -42,11 +51,11 @@ public class Phone {
 		this.user = user;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 	
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 	
@@ -64,5 +73,13 @@ public class Phone {
 	
 	public void setTypeOfNumber(String typeOfNumber) {
 		this.typeOfNumber = typeOfNumber;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

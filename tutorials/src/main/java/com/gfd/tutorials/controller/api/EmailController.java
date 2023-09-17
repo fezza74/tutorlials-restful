@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gfd.tutorials.model.User;
-import com.gfd.tutorials.service.UserService;
+import com.gfd.tutorials.model.Email;
+import com.gfd.tutorials.service.EmailService;
 
 @RestController
-@RequestMapping("/tutorials/api/users")
-public class UserController {
+@RequestMapping("/tutorials/api/emails")
+public class EmailController {
 	@Autowired
-	UserService userService;
+	EmailService emailService;
 	
 	@PostMapping
-	public User saveUser(@RequestBody User user){
-		return userService.saveUser(user);
+	public Email saveEmail(@RequestBody Email email){
+		return emailService.saveEmail(email);
 	}
 	
 	@GetMapping("/{id}")
-	public User getUser(@PathVariable Integer id) {
-		return userService.findById(id);
+	public Email getEmail(@PathVariable Integer id) {
+		return emailService.findById(id);
 	}
 }

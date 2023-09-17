@@ -35,7 +35,7 @@ public class Tutorial {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private User user;
+	private Phone user;
 	
 	@OneToMany(mappedBy = "tutorial", fetch = FetchType.LAZY)
 	private Set<Content> contents;
@@ -80,11 +80,11 @@ public class Tutorial {
 		this.createdAt = createdAt;
 	}
 
-	public User getUser() {
+	public Phone getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Phone user) {
 		this.user = user;
 	}
 

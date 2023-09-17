@@ -17,7 +17,7 @@ public class Url {
 	private String url;
 	
 	@Column(
-		name="url_description" //web, youtube, instagram, ...
+		name="url_description" //website, youtube, instagram, ...
 	)
 	private String urlDescription;
 	

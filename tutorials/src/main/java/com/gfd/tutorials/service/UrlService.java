@@ -3,38 +3,38 @@ package com.gfd.tutorials.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.gfd.tutorials.model.Content;
-import com.gfd.tutorials.repository.IContentRepository;
+import com.gfd.tutorials.model.Url;
+import com.gfd.tutorials.repository.IUrlRepository;
 
 
 @Service
-public class UrlService implements IContentService {
+public class UrlService implements IUrlService {
 	@Autowired
-	IContentRepository contentRepository;
+	IUrlRepository urlRepository;
 	
 	@Override
-	public Content saveContent(Content content) {
-		return contentRepository.save(content);
+	public Url saveUrl(Url url) {
+		return urlRepository.save(url);
 	}
 
 	@Override
-	public Content findById(Integer id) {
-		return contentRepository.findById(id).orElse(null);
+	public Url findById(Integer id) {
+		return urlRepository.findById(id).orElse(null);
 	}
 
 	@Override
-	public List<Content> findAll() {
-		return (List<Content>) contentRepository.findAll();
+	public List<Url> findAll() {
+		return (List<Url>) urlRepository.findAll();
 	}
 
 	@Override
-	public Content updateContent(Content content, Integer id) {
-		return contentRepository.save(content);
+	public Url updateUrl(Url url, Integer id) {
+		return urlRepository.save(url);
 	}
 	
 	@Override
 	public void deleteById(Integer id) {
-		contentRepository.deleteById(id);
+		urlRepository.deleteById(id);
 	}
 
 }

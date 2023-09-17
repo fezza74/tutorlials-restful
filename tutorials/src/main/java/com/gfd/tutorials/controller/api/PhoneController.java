@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gfd.tutorials.model.User;
-import com.gfd.tutorials.service.UserService;
+import com.gfd.tutorials.model.Phone;
+import com.gfd.tutorials.service.PhoneService;
 
 @RestController
-@RequestMapping("/tutorials/api/users")
-public class UserController {
+@RequestMapping("/tutorials/api/phones")
+public class PhoneController {
 	@Autowired
-	UserService userService;
+	PhoneService phoneService;
 	
 	@PostMapping
-	public User saveUser(@RequestBody User user){
-		return userService.saveUser(user);
+	public Phone savePhone(@RequestBody Phone phone){
+		return phoneService.savePhone(phone);
 	}
 	
 	@GetMapping("/{id}")
-	public User getUser(@PathVariable Integer id) {
-		return userService.findById(id);
+	public Phone getPhone(@PathVariable Integer id) {
+		return phoneService.findById(id);
 	}
 }

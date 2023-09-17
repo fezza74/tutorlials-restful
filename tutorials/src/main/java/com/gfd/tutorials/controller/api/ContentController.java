@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gfd.tutorials.model.User;
-import com.gfd.tutorials.service.UserService;
+import com.gfd.tutorials.model.Content;
+import com.gfd.tutorials.service.ContentService;
 
 @RestController
-@RequestMapping("/tutorials/api/users")
-public class UserController {
+@RequestMapping("/tutorials/api/contents")
+public class ContentController {
 	@Autowired
-	UserService userService;
+	ContentService contentService;
 	
 	@PostMapping
-	public User saveUser(@RequestBody User user){
-		return userService.saveUser(user);
+	public Content saveContent(@RequestBody Content content){
+		return contentService.saveContent(content);
 	}
 	
 	@GetMapping("/{id}")
-	public User getUser(@PathVariable Integer id) {
-		return userService.findById(id);
+	public Content getContent(@PathVariable Integer id) {
+		return contentService.findById(id);
 	}
 }
