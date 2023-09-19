@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gfd.tutorials.model.Phone;
-import com.gfd.tutorials.model.User;
 import com.gfd.tutorials.repository.IPhoneRepository;
 import com.gfd.tutorials.repository.IUserRepository;
 
@@ -18,8 +17,7 @@ public class PhoneService implements IPhoneService {
 	
 	@Override
 	public Phone savePhone(Phone phone) {
-		User user = iUserRepository.findByUserCode(phone.getUser().getUserCode());
-		phone.setUser(user);
+		phone.setUser(iUserRepository.findByUserCode(phone.getUser().getUserCode()));
 		return phoneRepository.save(phone);
 	}
 

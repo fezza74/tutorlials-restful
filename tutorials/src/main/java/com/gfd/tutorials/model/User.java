@@ -12,34 +12,31 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "users")
+@Table(
+	name = "users",
+	uniqueConstraints = {@UniqueConstraint(columnNames = {
+			"user_name",
+			"user_surname"
+	})}
+)
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonIgnore
 	private Integer id;
 	
-	@Column(
-			name="user_code",
-			length=16,
-			nullable=false,
-			unique=true
-	)
+	@Column(name="user_code", length=16, nullable=false)
 	private String userCode;
 	
-	@Column(
-			name="user_name",
-			length=32
-	)	
+	@Column(name="user_name", length=32)	
 	private String userName;
 	
-	@Column(
-			name="user_surname",
-			length=32
-	)
+	@Column(name="user_surname", length=32)
 	private String userSurname;
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
@@ -50,22 +47,22 @@ public class User {
 	@JsonIgnore
 	private Set<Phone> phones;
 	
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "user")
 	@JsonIgnore
-	private Set<Url> urls;
+	private Tutorial tutorial;
+
+	public Tutorial getTutorial() {
+		return tutorial;
+	}
 	
-	public Set<Url> getUrls() {
-		return urls;
+	public void setTutorial(Tutorial tutorial) {
+		this.tutorial = tutorial;
 	}
-
-	public void setUrls(Set<Url> urls) {
-		this.urls = urls;
-	}
-
+	
 	public Set<Phone> getPhones() {
 		return phones;
 	}
-
+	
 	public void setPhones(Set<Phone> phones) {
 		this.phones = phones;
 	}

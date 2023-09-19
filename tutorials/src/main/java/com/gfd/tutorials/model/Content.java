@@ -23,11 +23,12 @@ public class Content {
 	@Column(name = "type_of_content", length=64, nullable = false)
 	private String typeOfContent;
 	
-	@Column(name = "content_description", length = 256, nullable = false)
+	@Column(name = "content_description", length = 255, nullable = false)
 	private String description;
 	
 	@ManyToOne
 	@JoinColumn(name = "tutorial_id")
+	@JsonIgnore
 	private Tutorial tutorial;
 
 	public Integer getId() {

@@ -7,8 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +17,22 @@ public class Url {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonIgnore
 	private Integer id;
+
+	@Column(
+		name="url_path",
+		nullable = false,
+		unique = true
+	)
+	private String urlPath;
+	
+	@Column(
+		name="type_of_url" //website, youtube, instagram, ...
+	)
+	private String typeOfUrl;
+
+	@OneToOne(mappedBy = "url")
+	@JsonIgnore
+	private Tutorial tutorial;
 	
 	public Integer getId() {
 		return id;
@@ -26,42 +41,28 @@ public class Url {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	@Column(
-		name="url_address"
-	)
-	private String url;
 	
-	@Column(
-		name="url_description" //website, youtube, instagram, ...
-	)
-	private String urlDescription;
-	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
-	
-	public User getUser() {
-		return user;
+	public Tutorial getTutorial() {
+		return tutorial;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setTutorial(Tutorial tutorial) {
+		this.tutorial = tutorial;
 	}
 
-	public String getUrl() {
-		return url;
+	public String getUrlPath() {
+		return urlPath;
 	}
 	
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUrlPath(String url) {
+		this.urlPath = url;
 	}
 	
-	public String getUrlDescription() {
-		return urlDescription;
+	public String getTypeOfUrl() {
+		return typeOfUrl;
 	}
 	
-	public void setUrlDescription(String urlDescription) {
-		this.urlDescription = urlDescription;
+	public void setTypeOfUrl(String urlDescription) {
+		this.typeOfUrl = urlDescription;
 	}
 }

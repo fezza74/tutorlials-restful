@@ -26,7 +26,7 @@ public class UserService implements IUserService {
 	public User findByUserCode(String userCode) {
 		return iUserRepository.findByUserCode(userCode);
 	}
-
+	
 	@Override
 	public List<User> findAll() {
 		return (List<User>) iUserRepository.findAll();

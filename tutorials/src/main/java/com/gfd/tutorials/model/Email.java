@@ -29,7 +29,9 @@ public class Email {
 
 	@Column(
 		name="email_address",
-		length=32
+		length=32,
+		nullable = false,
+		unique = true
 	)
 	private String emailAddress;
 	

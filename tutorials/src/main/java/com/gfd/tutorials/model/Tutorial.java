@@ -2,9 +2,7 @@ package com.gfd.tutorials.model;
 
 import java.time.LocalDateTime;
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,36 +10,63 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "tutorials")
+@Table(
+	name = "tutorials",
+	uniqueConstraints = {@UniqueConstraint(columnNames = {
+			"tutorial_title",
+			"tutorial_subtitle"
+	})}
+)
 public class Tutorial {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonIgnore
 	private Integer id;
 	
-	@Column(name = "tutorial_name", length = 512, nullable = false)
-	private String name;
+	@Column(name = "tutorial_theme", length = 255, nullable = false)
+	private String tutorialTheme;
 	
-	@Column(name = "tutorial_title", length = 512, nullable = false, unique = true)
-	private String title;
+	@Column(name = "tutorial_title", length = 255, nullable = false)
+	private String tutorialTitle;
 	
-	@Column(name = "tutorial_subtitle", length = 512, nullable = false)
-	private String subtitle;
+	@Column(name = "tutorial_subtitle", length = 255, nullable = false)
+	private String tutorialSubtitle;
 	
 	@Column(name = "tutorial_createdAt", nullable = false)
 	private LocalDateTime createdAt;
 	
-	@ManyToOne
+	@OneToMany(mappedBy = "tutorial", fetch = FetchType.LAZY)
+	private Set<Content> contents;
+	
+	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "tutorial", fetch = FetchType.LAZY)
-	private Set<Content> contents;
+	@OneToOne
+	@JoinColumn(name = "url_id")
+	private Url url;
+
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user =user;
+	}
+	
+	public Url getUrl() {
+		return url;
+	}
+
+	public void setUrl(Url url) {
+		this.url = url;
+	}
 
 	public Integer getId() {
 		return id;
@@ -51,28 +76,28 @@ public class Tutorial {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTutorialTheme() {
+		return tutorialTheme;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTutorialTheme(String name) {
+		this.tutorialTheme = name;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getTutorialTitle() {
+		return tutorialTitle;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTutorialTitle(String title) {
+		this.tutorialTitle = title;
 	}
 
-	public String getSubtitle() {
-		return subtitle;
+	public String getTutorialSubtitle() {
+		return tutorialSubtitle;
 	}
 
-	public void setSubtitle(String subtitle) {
-		this.subtitle = subtitle;
+	public void setTutorialSubtitle(String subtitle) {
+		this.tutorialSubtitle = subtitle;
 	}
 
 	public LocalDateTime getCreatedAt() {
@@ -81,14 +106,6 @@ public class Tutorial {
 
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public Set<Content> getContents() {

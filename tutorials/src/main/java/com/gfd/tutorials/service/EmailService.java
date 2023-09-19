@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gfd.tutorials.model.Email;
-import com.gfd.tutorials.model.User;
 import com.gfd.tutorials.repository.IEmailRepository;
 import com.gfd.tutorials.repository.IUserRepository;
 
@@ -18,8 +17,8 @@ public class EmailService implements IEamilService {
 	
 	@Override
 	public Email saveEmail(Email email) {
-		User user = userRepository.findByUserCode(email.getUser().getUserCode());
-		email.setUser(user);
+		email.setUser(userRepository.findByUserCode(email.getUser().getUserCode()));
+		System.out.println(email.toString());
 		return emailRepository.save(email);
 	}
 

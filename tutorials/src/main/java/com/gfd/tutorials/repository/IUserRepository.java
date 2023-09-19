@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.gfd.tutorials.model.User;
 
 public interface IUserRepository extends CrudRepository<User, Integer> {
-	public User findByUserCode(String userCode);
+	User findByUserCode(String userCode);
 }

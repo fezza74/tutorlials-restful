@@ -6,6 +6,7 @@ import com.gfd.tutorials.model.Url;
 public interface IUrlService {
 	Url saveUrl(Url url);
 	Url findById(Integer id);
+	Url findByUrlPath(String path);
 	List<Url> findAll();
 	Url updateUrl(Url url, Integer id); 
 	void deleteById(Integer id);
