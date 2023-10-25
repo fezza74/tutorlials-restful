@@ -2,16 +2,21 @@ C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorial
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\model\Content.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\ITutorialService.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\controller\api\PhoneController.java
+C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\mapper\UserMapper.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\model\User.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\UrlService.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\controller\api\EmailController.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\UserService.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\repository\IUrlRepository.java
+C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\controller\GuiController.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\IEamilService.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\IUrlService.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\repository\IEmailRepository.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\IPhoneService.java
+C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\dto\UserDto.java
+C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\dto\PhoneDto.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\controller\api\UserController.java
+C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\dto\UserCompleteInformationDto.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\repository\ITutorialRepository.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\TutorialService.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\TutorialsApplication.java
@@ -22,6 +27,7 @@ C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorial
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\IUserService.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\exception\ErrorResponse.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\repository\IUserRepository.java
+C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\dto\EmailDto.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\exception\ResourceBadRequestException.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\repository\IContentRepository.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\controller\api\ContentController.java
@@ -31,5 +37,6 @@ C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorial
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\repository\IPhoneRepository.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\model\Tutorial.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\ContentService.java
+C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\mapper\UserCompleteInformationMapper.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\controller\api\TutorialController.java
 C:\Users\GianniFezza\Documents\tutorlials-restful\src\main\java\com\gfd\tutorials\service\PhoneService.java

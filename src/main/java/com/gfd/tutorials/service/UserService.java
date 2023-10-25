@@ -32,20 +32,12 @@ public class UserService implements IUserService {
 	
 	@Override
 	public User findByUserCode(String userCode) {
-		try {
-			return iUserRepository.findByUserCode(userCode);
-		} catch (RuntimeException ex) {
-			throw new ResourceNotFoundException("Utente con codice " + userCode + " non presente");
-		}
+		return iUserRepository.findByUserCode(userCode);
 	}
-	
+
 	@Override
 	public List<User> findAll() {
-		try {
 			return (List<User>) iUserRepository.findAll();
-		} catch (RuntimeException ex) {
-			throw new ResourceNotFoundException("Nessun utente presente in memoria");
-		}
 	}
 
 	@Override

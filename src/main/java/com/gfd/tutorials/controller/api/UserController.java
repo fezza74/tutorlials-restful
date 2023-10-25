@@ -2,14 +2,17 @@ package com.gfd.tutorials.controller.api;
 
 import java.util.List;
 
+import com.gfd.tutorials.dto.UserCompleteInformationDto;
+import com.gfd.tutorials.dto.UserDto;
+import com.gfd.tutorials.mapper.UserCompleteInformationMapper;
+import com.gfd.tutorials.mapper.UserMapper;
+import jakarta.validation.Valid;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.Banner;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import com.gfd.tutorials.model.User;
 import com.gfd.tutorials.service.UserService;
@@ -25,7 +28,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 public class UserController {
 	@Autowired
 	UserService userService;
-	
+
+	@Autowired
+	UserMapper userMapper;
+
+	@Autowired
+	UserCompleteInformationMapper userCompleteInformationMapper;
+
 	@Operation(summary = "Create a new User", description = "The user must not exist")
 	@ApiResponses(value = 
 		{	
@@ -68,10 +77,10 @@ public class UserController {
 		}
 	)
 	@PostMapping
-	public User saveUser(@RequestBody User user){
-		return userService.saveUser(user);
+	public User saveUser(@RequestBody UserDto userDto){
+		return userService.saveUser(userMapper.userDtoToUser(userDto));
 	}
-	
+
 	@Operation(summary = "Find a new User by Id", description = "The user must exist")
 	@ApiResponses(value = 
 		{	
@@ -113,12 +122,18 @@ public class UserController {
 			)
 		}
 	)
-	@GetMapping("/{id}")
+	@GetMapping("/id/{id}")
 	public User getUser(@PathVariable Integer id) {
 		return userService.findById(id);
 	}
-	
-	@Operation(summary = "Find a new User by user code", description = "The user must exist")
+
+	@GetMapping("/completeUserData/{userCode}")
+	public UserCompleteInformationDto getTotalUserData(@PathVariable String userCode){
+
+		return userCompleteInformationMapper.userToUserDto(userService.findByUserCode(userCode));
+	}
+
+	@Operation(summary = "Find a User by user code", description = "The user must exist")
 	@ApiResponses(value = 
 		{	
 			@ApiResponse
@@ -159,7 +174,7 @@ public class UserController {
 			)
 		}
 	)
-	@GetMapping("/{userCode}")
+	@GetMapping("/code/{userCode}")
 	public User getByUserCode(@PathVariable String userCode) {
 		return userService.findByUserCode(userCode);
 	}

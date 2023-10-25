@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Gestione Utenti</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="container my-2" style="text-align=left">
+    <h1>Lista Utenti</h1>
+
+    <a th:href="@{/showNewUserForm}" class="btn btn-primary btn-sm mb-3"> Aggiungi Utente </a>
+
+    <table class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Codice</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${listUsers}">
+            <td th:text="${user.userCode}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.userSurName}"></td>
+            <td colspan="2">
+                <table class="table table-striped table-responsive-md">
+                    <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Tipo email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="email : ${listEmails}">
+                        <td th:text="${email.emailAddress}"></td>
+                        <td th:text="${email.tipeOfEmail}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td colspan="2">
+                <table class="table table-striped table-responsive-md">
+                    <thead>
+                    <tr>
+                        <th>Telefono</th>
+                        <th>Nazione</th>
+                        <th>Tipo numero</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="phone : ${listPhones}">
+                        <td th:text="${phone.number}"></td>
+                        <td th:text="${phone.nation}"></td>
+                        <td th:text="${phone.typeOfNumber}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <a th:href="@{/showFormForUpdate/{userCode}(userCode=${user.userCode})}" class="btn btn-primary">Aggiorna</a>
+                <a th:href="@{/deleteUser/{userCode}(userCode=${user.userCode})}" class="btn btn-danger">Elimina</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
